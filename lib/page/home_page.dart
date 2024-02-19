@@ -1,6 +1,9 @@
 import 'package:educational_practice/global.dart';
+import 'package:educational_practice/initBase.dart';
 import 'package:educational_practice/widget/employee_card.dart';
 import 'package:flutter/material.dart';
+
+import '../model/Person.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -11,8 +14,10 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-String filter = "";
-bool search = false;
+  String filter = "";
+  bool search = false;
+  bool fav = false;
+  List<Person> filterPerson = [];
 
 class _MyHomePageState extends State<MyHomePage> {
   TextEditingController controller = new TextEditingController();
@@ -20,6 +25,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   initState() {
     super.initState();
+    initBD();
     controller.addListener(() {
       this.setState(() {
         filter = controller.text;
@@ -65,12 +71,57 @@ class _MyHomePageState extends State<MyHomePage> {
                       setState(() {});
                     },
                     icon: Icon(Icons.search))
-                : Container()
+                : Container(),
+            IconButton(
+                onPressed: () {
+                  filterPerson.clear();
+                  fav = !fav;
+                  for(int i = 0; i<allPerson.length; i++){
+                    if ((allPerson[i].favorite == true)){
+                      filterPerson.add(allPerson[i]);
+                    }
+                  }
+                  print(filterPerson);
+                  setState(() {
+                  });
+                },
+                icon: fav
+                    ? Icon(
+                  Icons.favorite,
+                  color: Colors.red,
+                )
+                    : Icon(
+                  Icons.favorite_border,
+                  color: Colors.red,
+                ))
           ],
         ),
         body: Padding(
           padding: const EdgeInsets.only(left: 16.0, right: 16),
-          child: ListView.builder(
+          child: fav ? ListView.builder(
+            shrinkWrap: true,
+            padding: const EdgeInsets.all(8),
+            itemCount: filterPerson.length,
+            itemBuilder: (BuildContext context, int index) {
+              if (filter == "") {
+                return EmployeeCard(
+                  index: filterPerson[index].id!-1,
+                );
+              } else {
+                if ((filterPerson[index]
+                    .firstName
+                    .toString()
+                    .toLowerCase()
+                    .contains(filter.toLowerCase()))) {
+                  return EmployeeCard(
+                    index: index,
+                  );
+                } else {
+                  return Container();
+                }
+              }
+            },
+          ) : ListView.builder(
             shrinkWrap: true,
             padding: const EdgeInsets.all(8),
             itemCount: allPerson.length,

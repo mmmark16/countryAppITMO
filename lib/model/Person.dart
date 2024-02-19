@@ -5,6 +5,8 @@ class Person {
   String? lastName;
   String? avatar;
   bool? favorite;
+  int? rating;
+
 
   Person({this.id, this.email, this.firstName, this.lastName, this.avatar, this.favorite});
 

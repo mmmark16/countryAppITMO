@@ -14,6 +14,7 @@ class EmployeeCard extends StatelessWidget {
       child: GestureDetector(
         onTap: (){
           currentPerson = allPerson[index];
+          FocusScope.of(context).requestFocus(new FocusNode());
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) => const EmployeePage(),
