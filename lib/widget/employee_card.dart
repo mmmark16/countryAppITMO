@@ -23,7 +23,7 @@ class EmployeeCard extends StatelessWidget {
         },
         child: Container(
           decoration: BoxDecoration(
-              color: Color.fromRGBO(135, 206, 250, 1),
+              color: isBlack ? Colors.blueGrey : Color.fromRGBO(135, 206, 250, 1),
               borderRadius: BorderRadius.all(Radius.circular(20))),
           height: 80,
           child: Row(
@@ -34,8 +34,8 @@ class EmployeeCard extends StatelessWidget {
                 height: 56,
                 child: Image.network(allPerson[index].avatar ?? "https://googleflutter.com/sample_image.jpg"),
               ),
-              Text('Имя сотрудника:', style: TextStyle(fontSize: 16),),
-              Text(allPerson[index].firstName ?? "Ошибка получения данных",  style: TextStyle(fontSize: 16),),
+              Text('Имя сотрудника:', style: Theme.of(context).textTheme.headline1,),
+              Text(allPerson[index].firstName ?? "Ошибка получения данных",  style: Theme.of(context).textTheme.headline1,),
             ],
           ),
         ),

@@ -32,9 +32,9 @@ class _EmployeePageState extends State<EmployeePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromRGBO(175, 238, 238, 1),
+        backgroundColor: isBlack ? Color.fromRGBO(75, 0, 130, 1) : Color.fromRGBO(175, 238, 238, 1),
         appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          backgroundColor: isBlack ? Colors.blueGrey : Colors.deepPurple.shade200,
           title: Text("Информация"),
           actions: [
             Padding(
@@ -52,11 +52,11 @@ class _EmployeePageState extends State<EmployeePage> {
                   icon: _favorite
                       ? Icon(
                           Icons.favorite,
-                          color: Colors.red,
+                    color: isBlack ? Colors.white : Colors.red,
                         )
                       : Icon(
                           Icons.favorite_border,
-                          color: Colors.red,
+                    color: isBlack ? Colors.white : Colors.red,
                         )),
             )
           ],
@@ -70,29 +70,31 @@ class _EmployeePageState extends State<EmployeePage> {
                     "https://googleflutter.com/sample_image.jpg"),
               ),
               Container(
+                padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                    color: Color.fromRGBO(135, 206, 250, 1),
+                    color: isBlack ? Colors.blueGrey : Color.fromRGBO(135, 206, 250, 1),
                     borderRadius: BorderRadius.all(Radius.circular(5))),
                 width: MediaQuery.of(context).size.width / 1.5,
                 child: Center(
                     child: Text(
                         "Имя сотрудника: ${currentPerson.firstName}" ??
                             "Ошибка получения данных",
-                        style: TextStyle(fontSize: 24))),
+                        style: Theme.of(context).textTheme.headline2)),
               ),
               SizedBox(
                 height: 20,
               ),
               Container(
+                padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                    color: Color.fromRGBO(135, 206, 250, 1),
+                    color: isBlack ? Colors.blueGrey : Color.fromRGBO(135, 206, 250, 1),
                     borderRadius: BorderRadius.all(Radius.circular(5))),
                 width: MediaQuery.of(context).size.width / 1.5,
                 child: Center(
                     child: Text(
                   "Фамилия сотрудника: ${currentPerson.lastName}" ??
                       "Ошибка получения данных",
-                  style: TextStyle(fontSize: 24),
+                      style: Theme.of(context).textTheme.headline2,
                 )),
               ),
               SizedBox(
@@ -100,18 +102,19 @@ class _EmployeePageState extends State<EmployeePage> {
               ),
               Center(
                 child: Container(
+                  padding: EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                      color: Color.fromRGBO(135, 206, 250, 1),
+                      color: isBlack ? Colors.blueGrey : Color.fromRGBO(135, 206, 250, 1),
                       borderRadius: BorderRadius.all(Radius.circular(5))),
                   child: Text(
-                      "Почта сотрудника: \n${currentPerson.email}" ??
-                          "Ошибка получения данных",
-                      style: TextStyle(fontSize: 24)),
+                      "Почта сотрудника: \n${currentPerson.email}" ?? "Ошибка получения данных",
+                      style: Theme.of(context).textTheme.headline2),
                 ),
               ),
               SizedBox(
                 height: 20,
               ),
+
             ],
           ),
         ));
