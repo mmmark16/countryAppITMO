@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'global.dart';
-import 'model/Person.dart';
+import '../global.dart';
+import '../model/Person.dart';
 
 Future getPerson1() async {
   var dio = Dio();

@@ -1,5 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import 'global.dart';
+import '../global.dart';
 
 
 initBD() async{

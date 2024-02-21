@@ -1,5 +1,5 @@
 import 'package:educational_practice/page/home_page.dart';
-import 'package:educational_practice/services.dart';
+import 'package:educational_practice/services/services.dart';
 import 'package:flutter/material.dart';
 import 'global.dart';
 

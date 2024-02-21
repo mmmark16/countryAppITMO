@@ -1,5 +1,5 @@
 import 'package:educational_practice/global.dart';
-import 'package:educational_practice/initBase.dart';
+import 'package:educational_practice/services/initBase.dart';
 import 'package:educational_practice/widget/employee_card.dart';
 import 'package:flutter/material.dart';
 
