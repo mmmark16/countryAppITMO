@@ -6,6 +6,7 @@ import 'global.dart';
 void main() async {
   await getPerson1();
   await getPerson2();
+  await getCountry();
   combineList();
 
   runApp(const MyApp());

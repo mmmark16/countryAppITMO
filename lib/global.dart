@@ -1,3 +1,4 @@
+import 'package:educational_practice/model/Country.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'model/Person.dart';
@@ -8,6 +9,7 @@ late List<String> allRating;
 late List<Person> allPerson1;
 late List<Person> allPerson2;
 late List<Person> allPerson;
+late List<CountryInfo> allCountry;
 bool isBlack = false;
 
 combineList(){

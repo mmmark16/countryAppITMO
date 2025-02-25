@@ -1,7 +1,5 @@
 import 'package:educational_practice/global.dart';
-import 'package:educational_practice/main.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class EmployeePage extends StatefulWidget {
   const EmployeePage({

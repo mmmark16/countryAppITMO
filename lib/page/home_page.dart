@@ -1,4 +1,5 @@
 import 'package:educational_practice/global.dart';
+import 'package:educational_practice/page/second_page.dart';
 import 'package:educational_practice/services/initBase.dart';
 import 'package:educational_practice/widget/employee_card.dart';
 import 'package:flutter/material.dart';
@@ -171,57 +172,77 @@ class _MyHomePageState extends State<MyHomePage> {
                 }),
           ],
         ),
-        body: Padding(
-          padding: const EdgeInsets.only(left: 16.0, right: 16),
-          child: fav
-              ? ListView.builder(
-                  shrinkWrap: true,
-                  padding: const EdgeInsets.all(8),
-                  itemCount: filterPerson.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    if (filter == "") {
-                      return EmployeeCard(
-                        index: filterPerson[index].id! - 1,
-                      );
-                    } else {
-                      if ((filterPerson[index]
-                          .firstName
-                          .toString()
-                          .toLowerCase()
-                          .contains(filter.toLowerCase()))) {
-                        return EmployeeCard(
-                          index: index,
-                        );
-                      } else {
-                        return Container();
-                      }
-                    }
-                  },
-                )
-              : ListView.builder(
-                  shrinkWrap: true,
-                  padding: const EdgeInsets.all(8),
-                  itemCount: allPerson.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    if (filter == "") {
-                      return EmployeeCard(
-                        index: index,
-                      );
-                    } else {
-                      if ((allPerson[index]
-                          .firstName
-                          .toString()
-                          .toLowerCase()
-                          .contains(filter.toLowerCase()))) {
-                        return EmployeeCard(
-                          index: index,
-                        );
-                      } else {
-                        return Container();
-                      }
-                    }
-                  },
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 16.0, right: 16),
+                child: fav
+                    ? ListView.builder(
+                        shrinkWrap: true,
+                        padding: const EdgeInsets.all(8),
+                        itemCount: 3,
+                        itemBuilder: (BuildContext context, int index) {
+                          if (filter == "") {
+                            return EmployeeCard(
+                              index: filterPerson[index].id! - 1,
+                            );
+                          } else {
+                            if ((filterPerson[index]
+                                .firstName
+                                .toString()
+                                .toLowerCase()
+                                .contains(filter.toLowerCase()))) {
+                              return EmployeeCard(
+                                index: index,
+                              );
+                            } else {
+                              return Container();
+                            }
+                          }
+                        },
+                      )
+                    : ListView.builder(
+                        shrinkWrap: true,
+                        padding: const EdgeInsets.all(8),
+                        itemCount: 3,
+                        itemBuilder: (BuildContext context, int index) {
+                          if (filter == "") {
+                            return EmployeeCard(
+                              index: index,
+                            );
+                          } else {
+                            if ((allPerson[index]
+                                .firstName
+                                .toString()
+                                .toLowerCase()
+                                .contains(filter.toLowerCase()))) {
+                              return EmployeeCard(
+                                index: index,
+                              );
+                            } else {
+                              return Container();
+                            }
+                          }
+                        },
+                      ),
+              ),
+              GestureDetector(
+                onTap: (){
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const SecondPage(),
+                      ),
+                    );
+                },
+                child: Container(
+                  width: 40,
+                  height: 40,
+                  color: Colors.black,
                 ),
+              )
+            ],
+          ),
         ));
   }
 }
