@@ -4,10 +4,7 @@ import 'package:flutter/material.dart';
 import 'global.dart';
 
 void main() async {
-  await getPerson1();
-  await getPerson2();
   await getCountry();
-  combineList();
 
   runApp(const MyApp());
 }
@@ -32,7 +29,7 @@ class MyApp extends StatelessWidget {
                 headline1: TextStyle(fontSize: 16, color: Colors.black),
                 headline2: TextStyle(fontSize: 24, color: Colors.black)),
       ),
-      home: const MyHomePage(title: 'Список работников'),
+      home: const MyHomePage(title: 'Список стран'),
     );
   }
 }

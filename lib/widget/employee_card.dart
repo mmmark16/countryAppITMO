@@ -1,5 +1,6 @@
 import 'package:educational_practice/global.dart';
 import 'package:flutter/material.dart';
+
 import '../page/employee_page.dart';
 
 class EmployeeCard extends StatelessWidget {
@@ -12,8 +13,8 @@ class EmployeeCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16.0),
       child: GestureDetector(
-        onTap: (){
-          currentPerson = allPerson[index];
+        onTap: () {
+          currentCountry = allCountry[index];
           FocusScope.of(context).requestFocus(new FocusNode());
           Navigator.of(context).push(
             MaterialPageRoute(
@@ -23,19 +24,28 @@ class EmployeeCard extends StatelessWidget {
         },
         child: Container(
           decoration: BoxDecoration(
-              color: isBlack ? Colors.blueGrey : Color.fromRGBO(135, 206, 250, 1),
+              color:
+                  isBlack ? Colors.blueGrey : Color.fromRGBO(135, 206, 250, 1),
               borderRadius: BorderRadius.all(Radius.circular(20))),
           height: 80,
+          width: MediaQuery.of(context).size.width / 2,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Container(
-                width: 56,
-                height: 56,
-                child: Image.network(allPerson[index].avatar ?? "https://googleflutter.com/sample_image.jpg"),
-              ),
-              Text('Имя сотрудника:', style: Theme.of(context).textTheme.headline1,),
-              Text(allPerson[index].firstName ?? "Ошибка получения данных",  style: Theme.of(context).textTheme.headline1,),
+                  width: MediaQuery.of(context).size.width / 3,
+                  child: Text(
+                    'Название страны:',
+                    style: Theme.of(context).textTheme.headline1,
+                  )),
+              Container(
+                  width: MediaQuery.of(context).size.width / 2,
+                  child: Text(
+                    allCountry[index].name.official ??
+                        "Ошибка получения данных",
+                    style: Theme.of(context).textTheme.headline1,
+                    overflow: TextOverflow.ellipsis,
+                  )),
             ],
           ),
         ),
